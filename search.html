@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả tìm kiếm - S-SNEAKER</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    
+    <style>
+        .results {
+            display: flex;
+            justify-content: center; /* Căn giữa theo chiều ngang */
+            align-items: center;  /* Căn giữa theo chiều dọc */
+            height: 300px; /* Bạn có thể điều chỉnh chiều cao tùy ý */
+            text-align: center; /* Căn giữa nội dung văn bản */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <div class="mobile-menu bg-second">
+        <a href="#" class="mb-logo">S-SNEAKER</a>
+        <span class="mb-menu-toggle" id="mb-menu-toggle">
+            <i class='bx bx-menu'></i>
+        </span>
+    </div>
+
+    <div class="header-wrapper" id="header-wrapper">
+        <span class="mb-menu-toggle mb-menu-close" id="mb-menu-close">
+            <i class='bx bx-x'></i>
+        </span>
+
+        <div class="bg-second">
+            <div class="top-header container">
+                <ul class="devided">
+                    <li><a href="#">+0123456789</a></li>
+                    <li><a href="#">s-sneaker@mail.com</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-main">
+            <div class="mid-header container">
+                <a href="index.html" class="logo">S-SNEAKER</a>
+                <form class="search" method="get" action="./search.html">
+                    <input name="search" type="text" placeholder="Tìm kiếm" required>
+                    <button type="submit" style="display:inline; border:none">
+                        <i class='bx bx-search-alt'></i>
+                    </button>
+                </form>
+
+                <ul class="user-menu">
+                    <li><a href="#"><i class='bx bx-bell'></i></a></li>
+                    <li class="mega-dropdown">
+                        <a href="#"><i class='bx bx-user-circle'></i></a>
+                        <div class="mega-content">
+                            <div class="row">
+                                <div class="box">
+                                    <h3>Xin chào!</h3>
+                                    <ul>
+                                        <li><a href="user-profile.html">Trang cá nhân</a></li>
+                                        <li><a href="cart-status.html">Đơn hàng</a></li>
+                                        <li><a href="logout.html">Đăng Xuất</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="./cart.html"><i class='bx bx-cart'></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-second">
+            <div class="bottom-header container">
+                <ul class="main-menu">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li class="mega-dropdown">
+                        <a href="index.html">Danh mục<i class='bx bxs-chevron-down'></i></a>
+                        <div class="mega-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="box">
+                                        <ul>
+                                            <li><a href="./products.html?type=shoes">Giày</a></li>
+                                            <li><a href="./products.html?type=accessories">Phụ kiện</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End of Header Section -->
+
+    <!-- Search Results Section -->
+    <div class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Kết quả tìm kiếm</h2>
+            </div>
+            <div class="results">
+                <p id="search-result-text">Không có sản phẩm nào phù hợp với tìm kiếm của bạn.</p>
+            </div>
+        </div>
+    </div>
+    <!-- End Search Results Section -->
+
+    <!-- Footer Section -->
+    <footer class="bg-second">
+        <div class="container">
+            <div class="row center">
+                <div class="col-5 col-md-6">
+                    <h3 class="footer-head">Thông tin liên hệ</h3>
+                    <ul style="text-transform:none" class="menu">
+                        <li><a href="#">Thành phố Hồ Chí Minh</a></li>
+                        <li><a href="#">0123456789</a></li>
+                        <li><a href="#">shoeshop@gmail.com</a></li>
+                        <li>
+                            <i class="fa-brands fa-facebook" style="color: #003899;"></i>
+                            <i class="fa-brands fa-instagram" style="color: #e1306c;"></i>
+                            <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
+                            <i class="fa-brands fa-twitter" style="color: #1da1f2;"></i>
+                            <i class="fa-brands fa-facebook-messenger" style="color: #003899;"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-2 col-md-6 col-sm-12">
+                    <div class="contact">
+                        <h2 style="font-size:2.1rem" class="contact-header">S-SNEAKER</h2>
+                        <ul style="padding-left: 0rem" class="contact-socials">
+                            <li><a href="#"><i class='bx bxl-facebook-circle'></i></a></li>
+                            <li><a href="#"><i class='bx bxl-instagram-alt'></i></a></li>
+                            <li><a href="#"><i class='bx bxl-youtube'></i></a></li>
+                            <li><a href="#"><i class='bx bxl-twitter'></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer Section -->
+
+    <script src="./assets/js/app.js"></script>
+    <script>
+        // Lấy giá trị tham số từ URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const searchTerm = urlParams.get('search');
+
+        // Hiển thị tìm kiếm trong phần kết quả
+        const searchResultText = document.getElementById("search-result-text");
+        if (searchTerm) {
+            searchResultText.textContent = `Kết quả tìm kiếm: "${searchTerm}"`;
+        }
+    </script>
+</body>
+
+</html>

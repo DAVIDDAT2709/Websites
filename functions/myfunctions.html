@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mt-5">Dashboard</h2>
+
+        <!-- User Count -->
+        <div class="mt-4">
+            <h4>Tổng số người dùng</h4>
+            <p id="user-count">Loading...</p>
+        </div>
+
+        <!-- User List -->
+        <div class="mt-4">
+            <h4>Danh sách người dùng</h4>
+            <table class="table" id="user-list">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên</th>
+                        <th>Email</th>
+                        <th>Số điện thoại</th>
+                        <th>Địa chỉ</th>
+                        <th>Số lần mua</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Order List -->
+        <div class="mt-4">
+            <h4>Danh sách đơn hàng</h4>
+            <table class="table" id="order-list">
+                <thead>
+                    <tr>
+                        <th>ID Đơn Hàng</th>
+                        <th>Tên Người Mua</th>
+                        <th>Email Người Mua</th>
+                        <th>Trạng thái</th>
+                        <th>Số lượng</th>
+                        <th>Tổng tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Revenue Details -->
+        <div class="mt-4">
+            <h4>Doanh thu theo ngày</h4>
+            <table class="table" id="daily-revenue">
+                <thead>
+                    <tr>
+                        <th>Ngày</th>
+                        <th>Doanh thu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-4">
+            <h4>Doanh thu theo tháng</h4>
+            <table class="table" id="monthly-revenue">
+                <thead>
+                    <tr>
+                        <th>Tháng</th>
+                        <th>Doanh thu</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data will be inserted here by JavaScript -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Example mock data for users, orders, and revenues
+        const users = [
+            { id: 1, name: 'John Doe', email: 'john.doe@example.com', phone: '0123456789', address: 'Hà Nội, Việt Nam', total_buy: 5 },
+            { id: 2, name: 'Jane Smith', email: 'jane.smith@example.com', phone: '0987654321', address: 'TP.HCM, Việt Nam', total_buy: 3 },
+            // Add more users as needed
+        ];
+
+        const orders = [
+            { id: 101, name: 'John Doe', email: 'john.doe@example.com', status: 'Completed', quantity: 2, total_price: 500 },
+            { id: 102, name: 'Jane Smith', email: 'jane.smith@example.com', status: 'Pending', quantity: 1, total_price: 200 },
+            // Add more orders as needed
+        ];
+
+        const dailyRevenue = [
+            { order_date: '2024-12-01', total_revenue: 1000 },
+            { order_date: '2024-12-02', total_revenue: 1200 },
+            // Add more daily revenue data as needed
+        ];
+
+        const monthlyRevenue = [
+            { order_month: '2024-12', total_revenue: 3000 },
+            { order_month: '2024-11', total_revenue: 2500 },
+            // Add more monthly revenue data as needed
+        ];
+
+        // Display user count
+        document.getElementById('user-count').textContent = users.length;
+
+        // Populate user list
+        const userTableBody = document.querySelector('#user-list tbody');
+        users.forEach(user => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${user.id}</td>
+                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.phone}</td>
+                <td>${user.address}</td>
+                <td>${user.total_buy}</td>
+            `;
+            userTableBody.appendChild(row);
+        });
+
+        // Populate order list
+        const orderTableBody = document.querySelector('#order-list tbody');
+        orders.forEach(order => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${order.id}</td>
+                <td>${order.name}</td>
+                <td>${order.email}</td>
+                <td>${order.status}</td>
+                <td>${order.quantity}</td>
+                <td>${order.total_price}</td>
+            `;
+            orderTableBody.appendChild(row);
+        });
+
+        // Populate daily revenue
+        const dailyRevenueBody = document.querySelector('#daily-revenue tbody');
+        dailyRevenue.forEach(revenue => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${revenue.order_date}</td>
+                <td>${revenue.total_revenue}</td>
+            `;
+            dailyRevenueBody.appendChild(row);
+        });
+
+        // Populate monthly revenue
+        const monthlyRevenueBody = document.querySelector('#monthly-revenue tbody');
+        monthlyRevenue.forEach(revenue => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${revenue.order_month}</td>
+                <td>${revenue.total_revenue}</td>
+            `;
+            monthlyRevenueBody.appendChild(row);
+        });
+    </script>
+</body>
+
+</html>

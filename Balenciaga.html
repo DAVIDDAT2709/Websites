@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sản phẩm Balenciaga</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <!-- Header -->
+    <div class="mobile-menu bg-second">
+        <a href="index.html" class="mb-logo">S-SNEAKER</a>
+        <span class="mb-menu-toggle" id="mb-menu-toggle">
+            <i class='bx bx-menu'></i>
+        </span>
+    </div>
+
+    <div class="header-wrapper" id="header-wrapper">
+        <span class="mb-menu-toggle mb-menu-close" id="mb-menu-close">
+            <i class='bx bx-x'></i>
+        </span>
+
+        <div class="bg-second">
+            <div class="top-header container">
+                <ul class="devided">
+                    <li>
+                        <a href="#">+0123456789</a>
+                    </li>
+                    <li>
+                        <a href="#">s-sneaker@mail.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-main">
+            <div class="mid-header container">
+                <a href="index.html" class="logo">S-SNEAKER</a>
+                <form class="search" method="get" action="./products.html">
+                    <input name="search" type="text" placeholder="Tìm kiếm">
+                    <button type="submit" style="display:inline; border:none">
+                        <i class='bx bx-search-alt'></i>
+                    </button>
+                </form>
+
+                <ul class="user-menu">
+                    <li><a href="#"><i class='bx bx-bell'></i></a></li>
+                    <li class="mega-dropdown">
+                        <a href="#"><i class='bx bx-user-circle'></i></a>
+                        <div class="mega-content">
+                            <div class="row">
+                                <div class="box">
+                                    <h3>Xin chào!</h3>
+                                    <ul>
+                                        <li><a href="user-profile.html">Trang cá nhân</a></li>
+                                        <li><a href="cart-status.html">Đơn hàng</a></li>
+                                        <li><a href="logout.html">Đăng Xuất</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li><a href="./cart.html"><i class='bx bx-cart'></i></a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bg-second">
+            <div class="bottom-header container">
+                <ul class="main-menu">
+                    <li><a href="index.html">Trang chủ</a></li>
+                    <li class="mega-dropdown">
+                        <a href="index.html">Danh mục<i class='bx bxs-chevron-down'></i></a>
+                        <div class="mega-content">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="box">
+                                        <ul>
+                                            <li><a href="nike.html">Nike</a></li>
+                                            <li><a href="balenciaga.html">Balenciaga</a></li>
+                                            <li><a href="adidas.html">Adidas</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End of Header Section -->
+
+    <!-- Products content -->
+    <div class="bg-main">
+        <div class="container">
+            <div class="box">
+                <div class="breadcumb">
+                    <a href="index.html">Trang chủ</a>
+                    <span>&gt;</span>
+                    <a href="balenciaga.html">Balenciaga</a>
+                </div>
+            </div>
+            <div class="box">
+                <div class="row">
+                    <!-- Products column -->
+                    <div class="col-12">
+                        <div class="box">
+                            <div class="row" id="products">
+                                <!-- Balenciaga Product 1 -->
+                                <div class="col-4 col-md-6 col-sm-12">
+                                    <div class="product-card">
+                                        <div class="product-card-img">
+                                            <img src="images/balenciaga_product1.jpg" alt="Balenciaga Sản phẩm 1">
+                                            <img src="images/balenciaga_product1_alt.jpg" alt="Balenciaga Sản phẩm 1">
+                                        </div>
+                                        <div class="product-card-info">
+                                            <div class="product-btn">
+                                                <a href="product-detail.html?slug=balenciaga_product1" class="btn-flat btn-hover">Mua ngay</a>
+                                            </div>
+                                            <div class="product-card-name">Balenciaga Sản phẩm 1</div>
+                                            <div class="product-card-price">
+                                                <span><del>5,500,000đ</del></span>
+                                                <span class="curr-price">5,000,000đ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Thêm sản phẩm khác của Balenciaga nếu cần -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-second">
+        <div class="container">
+            <div class="row center">
+                <div class="col-5 col-md-6">
+                    <h3 class="footer-head">Thông tin liên hệ</h3>
+                    <ul style="text-transform:none" class="menu">
+                        <li><a href="#">Thành phố Hồ Chí Minh</a></li>
+                        <li><a href="#">0123456789</a></li>
+                        <li><a href="#">shoeshop@gmail.com</a></li>
+                        <li>
+                            <i class="fa-brands fa-facebook" style="color: #003899;"></i>
+                            <i class="fa-brands fa-instagram" style="color: #e1306c;"></i>
+                            <i class="fa-brands fa-youtube" style="color: #ff0000;"></i>
+                            <i class="fa-brands fa-twitter" style="color: #1da1f2;"></i>
+                            <i class="fa-brands fa-facebook-messenger" style="color: #003899;"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-2 col-md-6 col-sm-12">
+                    <div class="contact">
+                        <h2 style="font-size:2.1rem" class="contact-header">S-SNEAKER</h2>
+                        <ul style="padding-left: 0rem" class="contact-socials">
+                            <li><a href="#">
+                                    <i class='bx bxl-facebook-circle'></i>
+                                </a></li>
+                            <li><a href="#">
+                                    <i class='bx bxl-instagram-alt'></i>
+                                </a></li>
+                            <li><a href="#">
+                                    <i class='bx bxl-youtube'></i>
+                                </a></li>
+                            <li><a href="#">
+                                    <i class='bx bxl-twitter'></i>
+                                </a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- End Footer Section -->
+
+    <script src="./assets/js/app.js"></script>
+</body>
+
+</html>

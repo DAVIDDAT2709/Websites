@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .cart-table th, .cart-table td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mt-5">Giỏ Hàng Của Bạn</h2>
+
+        <!-- Thông báo -->
+        <div class="alert alert-success" role="alert">
+            <strong>Thông báo:</strong> Giỏ hàng của bạn đã được cập nhật!
+        </div>
+
+        <!-- Giỏ hàng -->
+        <div class="mt-4">
+            <h4>Danh sách sản phẩm trong giỏ hàng</h4>
+            <table class="table cart-table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá bán</th>
+                        <th>Tổng giá</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Sản phẩm A</td>
+                        <td>2</td>
+                        <td>500,000 VND</td>
+                        <td>1,000,000 VND</td>
+                        <td>
+                            <button class="btn btn-danger">Xóa</button>
+                            <button class="btn btn-primary">Cập nhật</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Sản phẩm B</td>
+                        <td>1</td>
+                        <td>300,000 VND</td>
+                        <td>300,000 VND</td>
+                        <td>
+                            <button class="btn btn-danger">Xóa</button>
+                            <button class="btn btn-primary">Cập nhật</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Phương thức thanh toán -->
+        <div class="mt-4">
+            <h4>Phương thức thanh toán</h4>
+            <form>
+                <div class="form-group">
+                    <label for="payment-method">Chọn phương thức thanh toán</label>
+                    <select class="form-control" id="payment-method" name="btn-pay">
+                        <option value="cod">Thanh toán khi nhận hàng</option>
+                        <option value="online">Thanh toán online</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Đặt hàng</button>
+            </form>
+        </div>
+
+        <!-- Đánh giá sản phẩm -->
+        <div class="mt-4">
+            <h4>Đánh giá sản phẩm</h4>
+            <form>
+                <div class="form-group">
+                    <label for="rating">Đánh giá (1 đến 5 sao)</label>
+                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Bình luận</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Gửi đánh giá</button>
+            </form>
+        </div>
+
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

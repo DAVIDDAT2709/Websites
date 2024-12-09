@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ Hàng</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="mt-5">Giỏ Hàng Của Bạn</h2>
+
+        <!-- Hiển thị thông báo nếu có -->
+        <div id="message" class="alert alert-success" style="display:none;"></div>
+
+        <!-- Giỏ hàng -->
+        <div class="mt-4">
+            <h4>Danh sách sản phẩm trong giỏ hàng</h4>
+            <table class="table" id="cart-table">
+                <thead>
+                    <tr>
+                        <th>Sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá bán</th>
+                        <th>Tổng giá</th>
+                        <th>Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Các sản phẩm sẽ được hiển thị ở đây -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Phương thức thanh toán -->
+        <div class="mt-4">
+            <h4>Phương thức thanh toán</h4>
+            <form id="payment-form">
+                <div class="form-group">
+                    <label for="payment-method">Chọn phương thức thanh toán</label>
+                    <select class="form-control" id="payment-method" name="btn-pay">
+                        <option value="cod">Thanh toán khi nhận hàng</option>
+                        <option value="online">Thanh toán online</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success mt-3">Đặt hàng</button>
+            </form>
+        </div>
+
+        <!-- Đánh giá sản phẩm -->
+        <div class="mt-4">
+            <h4>Đánh giá sản phẩm</h4>
+            <form id="rating-form">
+                <div class="form-group">
+                    <label for="rating">Đánh giá (1 đến 5 sao)</label>
+                    <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+                </div>
+                <div class="form-group">
+                    <label for="comment">Bình luận</label>
+                    <textarea class="form-control" id="comment" name="comment" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Gửi đánh giá</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Giả sử bạn có một giỏ hàng lưu trong localStorage
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        // Hiển thị giỏ hàng
+        function displayCart() {
+            const cartTable = document.querySelector("#cart-table tbody");
+            cartTable.innerHTML = ""; // Xóa nội dung cũ
+            let total = 0;
+            cart.forEach((item, index) => {
+                const totalPrice = item.selling_price * item.quantity;
+                total += totalPrice;
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${item.name}</td>
+                    <td>${item.quantity}</td>
+                    <td>${item.selling_price} VND</td>
+                    <td>${totalPrice} VND</td>
+                    <td>
+                        <button class="btn btn-danger" onclick="removeFromCart(${index})">Xóa</button>
+                        <button class="btn btn-primary" onclick="updateQuantity(${index})">Cập nhật</button>
+                    </td>
+                `;
+                cartTable.appendChild(row);
+            });
+            document.querySelector("#message").style.display = 'none'; // Ẩn thông báo
+        }
+
+        // Xóa sản phẩm khỏi giỏ hàng
+        function removeFromCart(index) {
+            cart.splice(index, 1);
+            localStorage.setItem("cart", JSON.stringify(cart));
+            displayCart();
+        }
+
+        // Cập nhật số lượng sản phẩm trong giỏ
+        function updateQuantity(index) {
+            const newQuantity = prompt("Nhập số lượng mới:");
+            if (newQuantity > 0) {
+                cart[index].quantity = newQuantity;
+                localStorage.setItem("cart", JSON.stringify(cart));
+                displayCart();
+            }
+        }
+
+        // Xử lý đặt hàng
+        document.getElementById("payment-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const paymentMethod = document.getElementById("payment-method").value;
+            if (cart.length > 0) {
+                // Giả lập quá trình đặt hàng
+                document.getElementById("message").textContent = "Đặt hàng thành công! Phương thức thanh toán: " + paymentMethod;
+                document.getElementById("message").style.display = 'block';
+                // Xóa giỏ hàng sau khi đặt hàng
+                localStorage.removeItem("cart");
+                cart = [];
+                displayCart();
+            } else {
+                document.getElementById("message").textContent = "Giỏ hàng của bạn trống!";
+                document.getElementById("message").style.display = 'block';
+            }
+        });
+
+        // Xử lý đánh giá sản phẩm
+        document.getElementById("rating-form").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const rating = document.getElementById("rating").value;
+            const comment = document.getElementById("comment").value;
+            if (rating >= 1 && rating <= 5) {
+                // Giả lập quá trình gửi đánh giá
+                document.getElementById("message").textContent = `Đánh giá thành công! ${rating} sao. Bình luận: ${comment}`;
+                document.getElementById("message").style.display = 'block';
+                document.getElementById("rating").value = "";
+                document.getElementById("comment").value = "";
+            } else {
+                document.getElementById("message").textContent = "Vui lòng nhập đánh giá hợp lệ!";
+                document.getElementById("message").style.display = 'block';
+            }
+        });
+
+        // Gọi hàm hiển thị giỏ hàng khi trang được tải
+        displayCart();
+    </script>
+</body>
+
+</html>

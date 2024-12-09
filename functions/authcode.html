@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký / Đăng nhập - S-SNEAKER</title>
+
+    <!-- Google font -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/app.css">
+    <style>
+        .auth-section {
+            margin-top: 20px;
+        }
+
+        .auth-section h2 {
+            text-align: center;
+        }
+
+        .auth-section .form-group {
+            margin-bottom: 15px;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 20px;
+            color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Đăng ký -->
+    <section class="auth-section" id="register-section">
+        <div class="container">
+            <h2>Đăng ký tài khoản</h2>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="register-name" class="form-control" placeholder="Nhập tên của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số điện thoại:</label>
+                    <input type="text" id="register-phone" class="form-control" placeholder="Nhập số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="register-email" class="form-control" placeholder="Nhập địa chỉ email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="register-password" class="form-control" placeholder="Nhập mật khẩu" required>
+                </div>
+                <div class="form-group">
+                    <label for="cpassword">Xác nhận mật khẩu:</label>
+                    <input type="password" id="register-cpassword" class="form-control" placeholder="Nhập lại mật khẩu" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Đăng nhập -->
+    <section class="auth-section" id="login-section">
+        <div class="container">
+            <h2>Đăng nhập</h2>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Nhập email của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Cập nhật thông tin -->
+    <section class="auth-section" id="update-section">
+        <div class="container">
+            <h2>Cập nhật thông tin</h2>
+            <form id="update-form">
+                <div class="form-group">
+                    <label for="name">Họ và tên:</label>
+                    <input type="text" id="update-name" class="form-control" placeholder="Nhập tên của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Số điện thoại:</label>
+                    <input type="text" id="update-phone" class="form-control" placeholder="Nhập số điện thoại" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="update-email" class="form-control" placeholder="Nhập địa chỉ email" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Địa chỉ:</label>
+                    <input type="text" id="update-address" class="form-control" placeholder="Nhập địa chỉ" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Mật khẩu:</label>
+                    <input type="password" id="update-password" class="form-control" placeholder="Nhập mật khẩu">
+                </div>
+                <div class="form-group">
+                    <label for="cpassword">Xác nhận mật khẩu:</label>
+                    <input type="password" id="update-cpassword" class="form-control" placeholder="Nhập lại mật khẩu">
+                </div>
+                <button type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Thông báo -->
+    <div class="message" id="message"></div>
+
+    <script>
+        // Xử lý đăng ký
+        document.getElementById('register-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            
+            var name = document.getElementById('register-name').value;
+            var phone = document.getElementById('register-phone').value;
+            var email = document.getElementById('register-email').value;
+            var password = document.getElementById('register-password').value;
+            var cpassword = document.getElementById('register-cpassword').value;
+
+            if (password !== cpassword) {
+                document.getElementById('message').textContent = "Mật khẩu xác nhận không đúng!";
+                return;
+            }
+
+            // Giả lập lưu trữ thông tin
+            localStorage.setItem('user', JSON.stringify({ name, phone, email, password }));
+            document.getElementById('message').textContent = "Đăng ký thành công!";
+        });
+
+        // Xử lý đăng nhập
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var email = document.getElementById('login-email').value;
+            var password = document.getElementById('login-password').value;
+
+            var user = JSON.parse(localStorage.getItem('user'));
+
+            if (user && user.email === email && user.password === password) {
+                document.getElementById('message').textContent = "Đăng nhập thành công!";
+            } else {
+                document.getElementById('message').textContent = "Email hoặc mật khẩu không chính xác!";
+            }
+        });
+
+        // Xử lý cập nhật thông tin
+        document.getElementById('update-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            var name = document.getElementById('update-name').value;
+            var phone = document.getElementById('update-phone').value;
+            var email = document.getElementById('update-email').value;
+            var address = document.getElementById('update-address').value;
+            var password = document.getElementById('update-password').value;
+            var cpassword = document.getElementById('update-cpassword').value;
+
+            var user = JSON.parse(localStorage.getItem('user'));
+
+            if (user && password !== "" && password !== cpassword) {
+                document.getElementById('message').textContent = "Mật khẩu xác nhận không đúng!";
+                return;
+            }
+
+            user.name = name;
+            user.phone = phone;
+            user.email = email;
+            user.address = address;
+            if (password) user.password = password;
+
+            localStorage.setItem('user', JSON.stringify(user));
+            document.getElementById('message').textContent = "Thông tin đã được cập nhật!";
+        });
+    </script>
+
+    <script src="../assets/js/bootstrap.bundle.min.js"></script>
+    <script src="../assets/js/app.js"></script>
+</body>
+
+</html>
